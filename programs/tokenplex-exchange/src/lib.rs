@@ -5,7 +5,7 @@ use anchor_spl::{
 };
 use enumflags2::{bitflags, BitFlags};
 
-declare_id!("EK1tZCBzCu4iHXucWQjwK2XAyDb5diLiNoP5HUCiAn8h");
+declare_id!("ALihg8RbWpzYNmr6RBYQnwWZp92XfFG3JoiMrwdpYg3U");
 
 #[program]
 pub mod tokenplex_exchange {

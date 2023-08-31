@@ -77,7 +77,7 @@ describe('tokenplex-exchange', () => {
   anchor.setProvider(provider);
 
   //const program = anchor.workspace.TokenplexExchange as anchor.Program<TokenplexExchange>;
-  const programId = "EK1tZCBzCu4iHXucWQjwK2XAyDb5diLiNoP5HUCiAn8h"
+  const programId = "ALihg8RbWpzYNmr6RBYQnwWZp92XfFG3JoiMrwdpYg3U"
   const program = new anchor.Program(idl, programId, provider)
 
   const coinMint = anchor.web3.Keypair.generate();
@@ -109,12 +109,13 @@ describe('tokenplex-exchange', () => {
   let authorityPcTokenAccount: anchor.web3.PublicKey;
 
   before(async () => {
+    /*
     await provider.connection.confirmTransaction(
       await provider.connection.requestAirdrop(
         authority.publicKey,
         10 * anchor.web3.LAMPORTS_PER_SOL,
       ),
-    );
+    ); */
 
     await createMint(provider, coinMint, 9);
     await createMint(provider, pcMint, 6);
