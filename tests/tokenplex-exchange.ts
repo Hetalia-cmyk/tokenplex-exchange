@@ -3,6 +3,10 @@ import * as spl from '@solana/spl-token';
 import { assert } from 'chai';
 import { TokenplexExchange } from '../target/types/tokenplex_exchange';
 import idl from "../target/idl/tokenplex_exchange.json";
+const {Keypair} = require("@solana/web3.js");
+const fs = require('fs');
+
+
 
 
 const createMint = async (
@@ -103,18 +107,29 @@ describe('tokenplex-exchange', () => {
   let openOrdersPda: anchor.web3.PublicKey;
   let openOrdersPdaBump: number;
 
-  const authority = anchor.web3.Keypair.generate();
+  //const authority = anchor.web3.Keypair.generate();
+  const secretKey = JSON.parse(fs.readFileSync("~/.config/solana/id.json"));
+//const secretKeynew = JSON.parse(fs.readFileSync("/Users/dm/Documents/fermi_labs/basic/keypair2/keypair2.json"));
+
+//const secretKeySecond = JSON.parse(fs.readFileSync("./kp3/key.json"));
+
+const keypair = Keypair.fromSecretKey(new Uint8Array(secretKey));
+//const keypair = Keypair.fromSecretKey(new Uint8Array(secretKey));
+//const keypair = anchor.web3.Keypair.generate();
+
+const authority = keypair;
 
   let authorityCoinTokenAccount: anchor.web3.PublicKey;
   let authorityPcTokenAccount: anchor.web3.PublicKey;
 
   before(async () => {
+    /*
     await provider.connection.confirmTransaction(
       await provider.connection.requestAirdrop(
         authority.publicKey,
-        10 * anchor.web3.LAMPORTS_PER_SOL,
+        2 * anchor.web3.LAMPORTS_PER_SOL,
       ),
-    );
+    );  */
 
     await createMint(provider, coinMint, 9);
     await createMint(provider, pcMint, 6);
