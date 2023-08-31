@@ -926,6 +926,10 @@ impl<'a> OrderBook<'a> {
             require!(limit_price.is_some(), ErrorCode::InvalidPrice);
         }
 
+        //CHECK LIMIT PRICE = price feed price + 1%
+        // use read_result to get price from oracle
+        // if price < required_price, error.
+
         let coin_lot_size = self.market.coin_lot_size;
         let pc_lot_size = self.market.pc_lot_size;
 
