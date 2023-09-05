@@ -6,7 +6,7 @@ use anchor_spl::{
 use enumflags2::{bitflags, BitFlags};
 use switchboard_solana::{AggregatorAccountData};
 
-declare_id!("EK1tZCBzCu4iHXucWQjwK2XAyDb5diLiNoP5HUCiAn8h");
+declare_id!("84eo5XmbNUVgW32SxwA3Hzc8mH94HdyWg2m5bDPGT863");
 
 #[program]
 pub mod tokenplex_exchange {
@@ -54,6 +54,12 @@ pub mod tokenplex_exchange {
         let event_q = &mut ctx.accounts.event_q;
         let authority = &ctx.accounts.authority;
         let token_program = &ctx.accounts.token_program;
+        let price_feed = &ctx.accounts.price_feed.load()?;
+
+        let val: f64 = price_feed.get_result()?.try_into()?;
+
+        msg!("oracle value is {}", val);
+        msg!("limit price is {}", limit_price);
 
         if !open_orders.is_initialized {
             open_orders.init(market.key(), authority.key())?;

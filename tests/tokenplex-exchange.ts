@@ -5,6 +5,8 @@ import { TokenplexExchange } from '../target/types/tokenplex_exchange';
 import idl from "../target/idl/tokenplex_exchange.json";
 const {Keypair} = require("@solana/web3.js");
 const fs = require('fs');
+import * as os from "os";
+import * as path from "path";
 
 
 
@@ -81,7 +83,9 @@ describe('tokenplex-exchange', () => {
   anchor.setProvider(provider);
 
   //const program = anchor.workspace.TokenplexExchange as anchor.Program<TokenplexExchange>;
-  const programId = "EK1tZCBzCu4iHXucWQjwK2XAyDb5diLiNoP5HUCiAn8h"
+  //const programId = "EK1tZCBzCu4iHXucWQjwK2XAyDb5diLiNoP5HUCiAn8h"
+  const programId = "84eo5XmbNUVgW32SxwA3Hzc8mH94HdyWg2m5bDPGT863";
+  const price_feed = new anchor.web3.PublicKey("2KgowxogBrGqRcgXQEmqFvC3PGtCu66qERNJevYW8Ajh");
   const program = new anchor.Program(idl, programId, provider)
 
   const coinMint = anchor.web3.Keypair.generate();
@@ -108,7 +112,11 @@ describe('tokenplex-exchange', () => {
   let openOrdersPdaBump: number;
 
   //const authority = anchor.web3.Keypair.generate();
-  const secretKey = JSON.parse(fs.readFileSync("~/.config/solana/id.json"));
+
+
+const homeDirectory = os.homedir();
+const solanaConfigPath = path.join(homeDirectory, ".config/solana/id.json");
+  const secretKey = JSON.parse(fs.readFileSync(solanaConfigPath));
 //const secretKeynew = JSON.parse(fs.readFileSync("/Users/dm/Documents/fermi_labs/basic/keypair2/keypair2.json"));
 
 //const secretKeySecond = JSON.parse(fs.readFileSync("./kp3/key.json"));
@@ -288,6 +296,7 @@ const authority = keypair;
             asks: asksPda,
             reqQ: reqQPda,
             eventQ: eventQPda,
+            priceFeed: price_feed,
             authority: authority.publicKey,
           })
           .signers([authority])
