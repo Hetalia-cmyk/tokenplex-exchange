@@ -4,6 +4,7 @@ use anchor_spl::{
     token::{Mint, Token, TokenAccount, Transfer},
 };
 use enumflags2::{bitflags, BitFlags};
+use switchboard_solana::{AggregatorAccountData};
 
 declare_id!("EK1tZCBzCu4iHXucWQjwK2XAyDb5diLiNoP5HUCiAn8h");
 
@@ -1643,6 +1644,9 @@ pub struct NewOrder<'info> {
     pub req_q: Box<Account<'info, RequestQueue>>,
     #[account(mut)]
     pub event_q: Box<Account<'info, EventQueue>>,
+
+    #[account(mut)]
+    pub price_feed: AccountLoader<'info, AggregatorAccountData>,
 
     #[account(mut)]
     pub authority: Signer<'info>,
