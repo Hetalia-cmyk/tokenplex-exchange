@@ -85,7 +85,9 @@ describe('tokenplex-exchange', () => {
   //const program = anchor.workspace.TokenplexExchange as anchor.Program<TokenplexExchange>;
   //const programId = "EK1tZCBzCu4iHXucWQjwK2XAyDb5diLiNoP5HUCiAn8h"
   const programId = "84eo5XmbNUVgW32SxwA3Hzc8mH94HdyWg2m5bDPGT863";
-  const price_feed = new anchor.web3.PublicKey("2KgowxogBrGqRcgXQEmqFvC3PGtCu66qERNJevYW8Ajh");
+  const price_feed = new anchor.web3.PublicKey("GvDMxPzN1sCj7L26YDK2HnMRXEQmQ2aemov8YBtPS7vR");
+
+  const oracle = new anchor.web3.PublicKey("SW1TCH7qEPTdLsDHRgPuMQjbQxKdH2aBStViMFnt64f");
   const program = new anchor.Program(idl, programId, provider)
 
   const coinMint = anchor.web3.Keypair.generate();
@@ -296,7 +298,8 @@ const authority = keypair;
             asks: asksPda,
             reqQ: reqQPda,
             eventQ: eventQPda,
-            priceFeed: price_feed,
+            aggregator: price_feed,
+            switchboard: oracle,
             authority: authority.publicKey,
           })
           .signers([authority])

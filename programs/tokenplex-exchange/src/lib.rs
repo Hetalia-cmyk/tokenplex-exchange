@@ -5,6 +5,8 @@ use anchor_spl::{
 };
 use enumflags2::{bitflags, BitFlags};
 use switchboard_solana::{AggregatorAccountData};
+use switchboard_solana::prelude::*;
+
 
 declare_id!("84eo5XmbNUVgW32SxwA3Hzc8mH94HdyWg2m5bDPGT863");
 
@@ -54,7 +56,7 @@ pub mod tokenplex_exchange {
         let event_q = &mut ctx.accounts.event_q;
         let authority = &ctx.accounts.authority;
         let token_program = &ctx.accounts.token_program;
-        let price_feed = &ctx.accounts.price_feed.load()?;
+        let price_feed = &ctx.accounts.aggregator.load()?;
 
         let val: f64 = price_feed.get_result()?.try_into()?;
 
@@ -1601,8 +1603,29 @@ impl OpenOrders {
 }
 
 #[derive(Accounts)]
+//#[instruction(params: ReadFeedParams)]
+pub struct ReadFeed<'info> {
+    pub aggregator: AccountLoader<'info, AggregatorAccountData>,
+}
+
+
+use std::str::FromStr;
+
+//#[feature(const_trait_impl)]
+//const expected_owner:Pubkey = Pubkey::from_str("SW1TCH7qEPTdLsDHRgPuMQjbQxKdH2aBStViMFnt64f").unwrap();
+#[derive(Accounts)]
 #[instruction(side: Side)]
+#[instruction(params: ReadFeedParams)]
 pub struct NewOrder<'info> {
+    //#[account(mut, owner=Pubkey("SW1TCH7qEPTdLsDHRgPuMQjbQxKdH2aBStViMFnt64f"))]
+    ///CHECK: not unsafe.
+    #[account(owner = switchboard.key())]
+    pub aggregator: AccountLoader<'info, AggregatorAccountData>,
+
+    ///CHECK: not unsafe.
+    //#[account(mut)]
+    pub switchboard: AccountInfo<'info>,
+
     #[account(
         init_if_needed,
         space = 8 + OpenOrders::MAX_SIZE,
@@ -1651,8 +1674,7 @@ pub struct NewOrder<'info> {
     #[account(mut)]
     pub event_q: Box<Account<'info, EventQueue>>,
 
-    #[account(mut)]
-    pub price_feed: AccountLoader<'info, AggregatorAccountData>,
+    
 
     #[account(mut)]
     pub authority: Signer<'info>,
