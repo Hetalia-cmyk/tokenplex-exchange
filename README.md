@@ -54,9 +54,7 @@ Our vision for Tokenplex is to serve as an incentivised hub of cross chain liqui
 Contribute
 Tokenplex is always on the lookout for passionate contributors. If you believe in our mission and want to be a part of our journey, check out our GitHub repository and contribute or give us feedback!
 
-🌐 Visit our official website for more information.
-
-Stay connected with Tokenplex:
+🌐 Visit our official website for more information. _coming soon_
 
 
 © 2023 Tokenplex. All Rights Reserved.
