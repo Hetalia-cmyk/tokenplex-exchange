@@ -340,6 +340,7 @@ const authority = keypair;
             reqQ: reqQPda,
             eventQ: eventQPda,
             authority: authority.publicKey,
+            
           })
           .signers([authority])
           .rpc();
