@@ -1,12 +1,19 @@
 # tokenplex-exchange
-Cross chain liquidity aggregator built using Solana+Wormhole
-Tokenplex
-Bridging Ethereum and Solana for Seamless Cross-Chain Liquidity
-Introduction
-Tokenplex is a pioneering Solana-based application designed to expand cross-chain liquidity by bridging the gap between the Ethereum and Solana ecosystems. 
-By leveraging the capabilities of Wormhole, Tokenplex facilitates the seamless migration of popular Ethereum tokens onto the Solana platform, where users can enjoy faster transactions, reduced fees, and increased scalability.
+Tokenplex: Bridging Ethereum and Solana for Seamless Cross-Chain Liquidity
 
-Tokenplex includes an inbuilt exchange- which is a novel, Oracle based exchange with built-in LP rewards, specifically designed for easy buying of bridged tokens without slippage.
+**Introduction**
+
+Tokenplex is a pioneering Solana-based application designed to expand cross-chain liquidity by bridging the gap between the Ethereum and Solana ecosystems. By leveraging the capabilities of Wormhole, Tokenplex facilitates the seamless migration of popular Ethereum tokens onto the Solana platform, where users can enjoy faster transactions, reduced fees, and increased scalability.
+
+Tokenplex includes an inbuilt exchange- which is a novel, Oracle based exchange with built-in LP rewards, specifically designed for easy buying of bridged tokens without slippage. This repo consists of the exchange programs, which can be tested using `anchor test`
+
+The deployed program ID on devenet is: 84eo5XmbNUVgW32SxwA3Hzc8mH94HdyWg2m5bDPGT863
+
+You can test it directly on devnet using:
+```
+yarn
+anchor test --skip-build --skip deploy
+```
 
 **Key Features:**
 
