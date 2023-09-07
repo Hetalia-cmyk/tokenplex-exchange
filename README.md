@@ -8,7 +8,8 @@ By leveraging the capabilities of Wormhole, Tokenplex facilitates the seamless m
 
 Tokenplex includes an inbuilt exchange- which is a novel, Oracle based exchange with built-in LP rewards, specifically designed for easy buying of bridged tokens without slippage.
 
-Key Features
+**Key Features:**
+
 🌉 Ethereum to Solana Bridge: Tokenplex uses Wormhole to ensure a smooth and secure transfer of tokens from Ethereum to Solana.
 
 💱 Swap with Confidence: Rely on our robust price feed oracle to get the most accurate and up-to-date prices for your swaps.
@@ -40,8 +41,8 @@ Transfer and Swap: Start transferring your Ethereum tokens and swapping them on 
 Support & Community
 Join our growing community on Discord and Telegram. For any queries or support, reach out to our dedicated support team.
 
-Roadmap
-Our vision for Tokenplex is to serve as an incentivised hub of cross chain liquidity on solana.
+**Roadmap**
+Our vision for Tokenplex is to serve as an incentivised hub of cross chain liquidity on solana. Whitepaper coming soon.
 
 Contribute
 Tokenplex is always on the lookout for passionate contributors. If you believe in our mission and want to be a part of our journey, check out our GitHub repository and contribute or give us feedback!
