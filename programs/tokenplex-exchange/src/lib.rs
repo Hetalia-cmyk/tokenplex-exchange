@@ -63,6 +63,15 @@ pub mod tokenplex_exchange {
         msg!("oracle value is {}", val);
         msg!("limit price is {}", limit_price);
 
+         // Check price = oracle price + LP rewards (2.5%).
+        let lower_bound: u64 = (val * 1.02) as u64;
+        let upper_bound: u64 = (val * 1.03) as u64;
+
+        if limit_price < lower_bound || limit_price > upper_bound {
+        //return Err(Error)); // Replace 0xABCDEF01 with a suitable error code.
+        msg!("faulty price, exiting");
+        }
+
         if !open_orders.is_initialized {
             open_orders.init(market.key(), authority.key())?;
         } else {
