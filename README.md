@@ -21,8 +21,6 @@ anchor test --skip-build --skip deploy
 
 💱 Swap with Confidence: Rely on our robust price feed oracle to get the most accurate and up-to-date prices for your swaps.
 
-🔗 Cross-Chain Liquidity Pools: Tokenplex manages liquidity pools across both chains, ensuring efficient and seamless token swaps.
-
 💡 LP Rewards: Hardcoded 2% rewards for all LPs to incentivise bridged wormhole liquidity on solana.
 
 💰 Reduced Transaction Fees: Say goodbye to exorbitant gas fees on Ethereum and enjoy the low-cost benefits of the Solana network.
